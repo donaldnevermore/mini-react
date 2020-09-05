@@ -1,7 +1,7 @@
 {
   "name": "beact",
   "version": "0.0.1",
-  "description": "A simplest front-end framework like react",
+  "description": "A react-like front-end framework",
   "main": "index.js",
   "license": "MIT"
 }

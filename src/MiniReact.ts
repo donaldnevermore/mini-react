@@ -1,18 +1,18 @@
-interface SimplestReactElement {
+interface MiniReactElement {
     type: string;
     props: {
         [name: string]: any,
         nodeValue: string | null,
-        children: (SimplestReactElement | string)[]
+        children: (MiniReactElement | string)[]
     }
 }
 
-function createElement(type: string, props: any = null, ...children: (SimplestReactElement | string)[]): SimplestReactElement {
+function createElement(type: string, props: any = null, ...children: (MiniReactElement | string)[]): MiniReactElement {
     return {
         type,
         props: {
             ...props,
-            children: children.map((child: SimplestReactElement | string) => {
+            children: children.map((child: MiniReactElement | string) => {
                 if (typeof child === "object") {
                     return child;
                 }
@@ -24,7 +24,7 @@ function createElement(type: string, props: any = null, ...children: (SimplestRe
     };
 }
 
-function createTextElement(text: string): SimplestReactElement {
+function createTextElement(text: string): MiniReactElement {
     return {
         type: "TEXT_ELEMENT",
         props: {
@@ -34,7 +34,7 @@ function createTextElement(text: string): SimplestReactElement {
     };
 }
 
-function render(element: SimplestReactElement, container: HTMLElement) {
+function render(element: MiniReactElement, container: HTMLElement) {
     const dom: any = element.type === "TEXT_ELEMENT"
         ? document.createTextNode("")
         : document.createElement(element.type);
@@ -46,21 +46,21 @@ function render(element: SimplestReactElement, container: HTMLElement) {
             dom[name] = element.props[name];
         });
 
-    element.props.children.forEach((child: SimplestReactElement) => {
+    element.props.children.forEach((child: MiniReactElement) => {
         render(child, dom);
     });
 
     container.appendChild(dom);
 }
 
-const SimplestReact = {
+const MiniReact = {
     createElement,
     render
 };
 
-const element = SimplestReact.createElement("div", { id: "foo" },
-    SimplestReact.createElement("a", null, "bar"),
-    SimplestReact.createElement("b")
+const element = MiniReact.createElement("div", { id: "foo" },
+    MiniReact.createElement("a", null, "bar"),
+    MiniReact.createElement("b")
 );
 
 const container = document.getElementById("root");
