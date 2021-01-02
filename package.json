@@ -1,7 +1,7 @@
 {
-  "name": "beact",
+  "name": "didact",
   "version": "0.0.1",
-  "description": "A react-like front-end framework",
+  "description": "",
   "main": "index.js",
   "license": "MIT"
 }
