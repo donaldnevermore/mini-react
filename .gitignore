@@ -1,11 +1,12 @@
 # IDEs
-.vscode/
-.idea/
-.vs/
+/.vscode
+/.idea
+/.vs
+
+/out
+/build
 
 # Dependencies
-node_modules
+/node_modules
 package-lock.json
-
-# Output
-built
+yarn.lock
